@@ -1,12 +1,13 @@
 import inquirer from "inquirer";
 import { SectionLine } from "../utils";
 
-const createLanguage = () => inquirer.prompt([
+// Returns the value chosen by the user
+const promptLanguage = () => inquirer.prompt([
   {
     type: 'list',
     askAnswered: true,
     message: 'Please select a language to create a FiveM App for... ',
-    name: 'languages',
+    name: 'val',
     choices: [
       new inquirer.Separator(SectionLine),
       {
@@ -16,11 +17,8 @@ const createLanguage = () => inquirer.prompt([
         name: 'JavaScript'
       },
       new inquirer.Separator(SectionLine),
-    ],
-    filter: value => {
-      return value;
-    }
+    ]
   }
 ])
 
-export default createLanguage
+export default promptLanguage

@@ -1,10 +1,10 @@
 import inquirer from "inquirer";
 
-const createResource = () => inquirer.prompt([
+const promptResource = () => inquirer.prompt([
   {
-    name: 'resource',
+    name: 'val',
     type: 'input',
-    message: 'Type in the name of the resource',
+    message: 'Type in the name of the resource:',
     validate: function(value) {
       if (value.length) {
         return true
@@ -15,4 +15,4 @@ const createResource = () => inquirer.prompt([
   }
 ])
 
-export default createResource
+export default promptResource
