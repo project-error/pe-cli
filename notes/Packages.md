@@ -13,7 +13,7 @@
 
 
 ## TypeScript Required Dependencies
-*If a user selects TypeScript as their preferred langauge these packages will be shown as choices*
+*If a user selects TypeScript as their preferred langauge these packages will be required without input*
 
 * [@citizenfx/client](https://www.npmjs.com/package/@citizenfx/client) - Type Wrapper for cfx client type
 * [@citizenfx/server](https://www.npmjs.com/package/@citizenfx/server) - Type Wrapper for cfx server types
