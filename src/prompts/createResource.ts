@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 
 const createResource = () => inquirer.prompt([
   {
-    name: 'Resource name',
+    name: 'resource',
     type: 'input',
     message: 'Type in the name of the resource',
     validate: function(value) {
