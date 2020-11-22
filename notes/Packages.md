@@ -18,3 +18,6 @@
 * [@citizenfx/client](https://www.npmjs.com/package/@citizenfx/client) - Type Wrapper for cfx client type
 * [@citizenfx/server](https://www.npmjs.com/package/@citizenfx/server) - Type Wrapper for cfx server types
 * [@types/node](https://www.npmjs.com/package/@types/node) - Node Type Wrapper
+* [@typescript](https://www.npmjs.com/package/typescript) - TypeScript because uh
+
+## Choose TypeScript Packages
