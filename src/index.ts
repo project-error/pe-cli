@@ -5,6 +5,12 @@ import chalk from "chalk";
 import inquirer from "inquirer";
 
 const ui = new inquirer.ui.BottomBar();
-figlet.textSync('Create-FiveM-App',  {font: "Standard", horizontalLayout: "fitted" })
+
+console.log(
+  chalk.red(
+    figlet.textSync('Create-FiveM-App',  {font: 'Standard',horizontalLayout: "fitted" })
+  )
+)
+
 // Instantly Execs create command for testing
 createCommand()
