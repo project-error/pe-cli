@@ -15,10 +15,10 @@ const createLanguage = () => inquirer.prompt([
       {
         name: 'JavaScript'
       },
-      new inquirer.Separator(SectionLine)
+      new inquirer.Separator(SectionLine),
     ],
-    filter(answer): any {
-      console.log(answer)
+    filter: value => {
+      return value;
     }
   }
 ])
