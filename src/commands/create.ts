@@ -10,7 +10,7 @@ export const createCommand = async () => {
   const packages = await promptPackages(language.val)
 
   if (language.val === 'TypeScript') {
-    createTypescriptResource(resourceName.val)
+    createTypescriptResource(resourceName.val, packages.val)
   }
 
   const resultObject = {
@@ -18,6 +18,7 @@ export const createCommand = async () => {
     resourceName,
     packages
   }
+
   console.log("Result of prompts:")
   console.log(resultObject)
   // At this point we take results and pass it to a function that actually uses the inputs to create
