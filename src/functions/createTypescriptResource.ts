@@ -14,19 +14,15 @@ const createTypescriptResource = (resourceName: string, tsPackages: string[]) =>
   spinner.succeed();
 
   spinner.text = "Creating fxmanifest.lua"
-  fs.writeFile(`${manifestPath}/fxmanifest.lua`, data, (err) => {
-    if (err) {
-      spinner.fail()
-    } else {
-      spinner.succeed();
-    }
-  })
+  fs.writeFileSync(`${manifestPath}/fxmanifest.lua`, data);
   spinner.succeed();
 
   spinner.text = "Adding packages"
   if (shell.exec(execString).code !== 0) {
     spinner.fail();
     shell.exit(1)
+  } else {
+    spinner.succeed();
   }
 
   for (const tsPackage of tsPackages) {
