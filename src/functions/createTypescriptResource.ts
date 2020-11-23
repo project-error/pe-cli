@@ -10,11 +10,23 @@ const createTypescriptResource = (resourceName: string, tsPackages: string[]) =>
   const execString = `cd ${manifestPath} && yarn init -y --silent && yarn add @citizenfx/client @citizenfx/server --silent`
 
   const spinner = ora(`Creating ${resourceName} folder`).start();
-  fs.mkdirSync(manifestPath);
+
+  try {
+    fs.mkdirSync(manifestPath);
+  } catch(err) {
+    console.log(err)
+  }
+
   spinner.succeed();
 
   spinner.text = "Creating fxmanifest.lua"
-  fs.writeFileSync(`${manifestPath}/fxmanifest.lua`, data);
+
+  try {
+    fs.writeFileSync(`${manifestPath}/fxmanifest.lua`, data);
+  } catch(err) {
+    console.log(err)
+  }
+
   spinner.succeed();
 
   spinner.text = "Adding packages"
