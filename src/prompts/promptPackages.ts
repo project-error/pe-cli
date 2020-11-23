@@ -46,13 +46,13 @@ const tsPackages = () => {
       choices: [
         new inquirer.Separator(SectionLine),
         {
-          name: "TypeORM"
+          name: "typeorm"
         },
         {
-          name: "Package2"
+          name: "fivem-js"
         },
         {
-          name: "Package3"
+          name: "mysql2"
         },
         new inquirer.Separator(SectionLine)
       ]
