@@ -7,7 +7,7 @@ const createTypescriptResource = (resourceName: string, tsPackages: string[]) =>
 
   const manifestPath = path.resolve(resourceName)
   const data = "fx_version 'adamant'\ngame 'gta5' \n\nclient_script '*.client.js'\n\nserver_script '*.server.js'"
-  const execString = `cd ${manifestPath} && yarn init -y --silent && yarn add @citizenfx/client @citizenfx/server --silent`
+  const execString = `cd ${manifestPath} && yarn init -y --silent && yarn add @citizenfx/client @citizenfx/server webpack webpack-cli ts-loader --silent`
 
   const spinner = ora(`Creating ${resourceName} folder`).start();
 
@@ -42,7 +42,8 @@ const createTypescriptResource = (resourceName: string, tsPackages: string[]) =>
     shell.exec(`cd ${manifestPath} && yarn add ${tsPackage} --silent`)
     spinner.succeed();
   }
-
+  
+  shell.exec(`cd ${manifestPath} && npx webpack-cli init`)
 
 }
 
