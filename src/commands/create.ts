@@ -2,6 +2,7 @@ import promptLanguage from '../prompts/promptLanguage'
 import promptResource from '../prompts/promptResource';
 import promptPackages from '../prompts/promptPackages'
 import createTypescriptResource from '../functions/createTypescriptResource';
+import createJavascriptResource from '../functions/createJavascriptResource';
 
 // Create command functionality
 export const createCommand = async () => {
@@ -11,6 +12,10 @@ export const createCommand = async () => {
 
   if (language.val === 'TypeScript') {
     createTypescriptResource(resourceName.val, packages.val)
+  }
+
+  if (language.val === "JavaScript") {
+    createJavascriptResource(resourceName.val, packages.val)
   }
 
   const resultObject = {
