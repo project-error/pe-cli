@@ -46,6 +46,10 @@ const createJavascriptResource = (resourceName: string, packages: string[]) => {
     } catch (error) {
       spinner.fail('Failed to create server file')
     }
+  } else {
+    // creating javascript resource with packages
+
+    
   }
 
 }
