@@ -6,7 +6,7 @@ import ora from 'ora';
 const createTypescriptResource = (resourceName: string, tsPackages: string[]) => {
 
   const manifestPath = path.resolve(resourceName)
-  const data = "fx_version 'adamant'\ngame 'gta5' \n\nclient_script '*.client.js'\n\nserver_script '*.server.js'"
+  const data = "fx_version 'adamant'\ngame 'gta5' \n\nclient_script 'dist/*.client.js'\n\nserver_script 'dist/*.server.js'"
   const execString = `cd ${manifestPath} && yarn init -y --silent && yarn add @citizenfx/client @citizenfx/server webpack webpack-cli ts-loader --silent`
 
   const spinner = ora(`Creating ${resourceName} folder`).start();
@@ -43,7 +43,13 @@ const createTypescriptResource = (resourceName: string, tsPackages: string[]) =>
     spinner.succeed();
   }
   
-  shell.exec(`cd ${manifestPath} && npx webpack-cli init`)
+  //FIXME: Clone repo, copy files and delete directory
+  try {
+    //shell.exec(`curl -s https://raw.githubusercontent.com/itschip/cfa-templates/master/ts/webpack.config.js -o ${resourceName}/webpack.config.js`)
+    shell.exit(1);
+  } catch (error) {
+    console.log(error)
+  }
 
 }
 
