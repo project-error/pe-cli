@@ -10,7 +10,7 @@ const createTypescriptResource = (
 ) => {
   const resourcePath = path.resolve(resourceName);
   const data =
-    "fx_version 'adamant'\ngame 'gta5' \n\nclient_script 'dist/*.client.js'\n\nserver_script 'dist/*.server.js'";
+    "fx_version 'adamant'\ngame 'gta5' \n\nclient_script 'dist/client/*.client.js'\n\nserver_script 'dist/server/*.server.js'";
 
   const spinner = ora(`Creating ${resourceName} folder`).start();
 
@@ -73,11 +73,28 @@ const createTypescriptResource = (
       `${resourcePath}/cfa-templates/ts/webpack.config.js`,
       `${resourcePath}/webpack.config.js`
     );
+    // tsconfig
+    fs.copyFileSync(
+      `${resourcePath}/cfa-templates/ts/client/tsconfig.json`,
+      `${resourcePath}/client/tsconfig.json`
+    );
+    fs.copyFileSync(
+      `${resourcePath}/cfa-templates/ts/server/tsconfig.json`,
+      `${resourcePath}/server/tsconfig.json`
+    );
   } catch (error) {
     console.log(error);
   }
 
   rimraf.sync(`${resourcePath}/cfa-templates`);
+
+  try {
+    if (shell.exec(`cd ${resourcePath} && yarn --silent`).code !== 0) {
+      shell.exit(1);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 
   for (const tsPackage of tsPackages) {
     spinner.text = `Adding ${tsPackage}`;
