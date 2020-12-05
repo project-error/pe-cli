@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { createCommand } from "./commands/create";
 import figlet from "figlet";
 import chalk from "chalk";
