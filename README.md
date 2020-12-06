@@ -1,5 +1,5 @@
 # Create FiveM App
-Create FiveM App is a Command Line Tool (CLI Tool) that can be used to quickly scaffold
+Create FiveM App is a Command Line Interface (CLI) that can be used to quickly scaffold
 and boilerplate a FiveM resource using the options specified.
 
 ### Made by TasoOneAsia and ItsChip
