@@ -25,7 +25,8 @@ export const createEssentials = (
 
   spinner.text = "Creating fxmanifest!";
   try {
-    // CREATING THE FXMANIFEST
+    // CREATING THE FXMANIFEST IF THE USER CHOOSE TYPESCRIPT
+    // OR IF THE USER CHOOSES JS AND PACKAGES
     if (isTypescript || packages.length > 0) {
       fs.writeFileSync(`${resourcePath}/fxmanifest.lua`, packagesData);
     } else {
