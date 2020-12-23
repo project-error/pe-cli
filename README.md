@@ -15,11 +15,4 @@ yarn global add create-fivem-app
 ```
 
 ### Commands
-where commands will go
-
-### Create
-where create specific instructions will go
-
-
-### Config
-where config command instructions will go
+Run `cfa-create` in your termial to start.
