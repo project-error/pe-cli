@@ -8,9 +8,9 @@ export const createEssentials = (
   isTypescript: boolean
 ) => {
   const packagesData =
-    "fx_version 'adamant'\ngame 'gta5'\n\nclient_script 'dist/client/*.client.js'\n\nserver_script 'dist/server/*.server.js'"
+    "fx_version 'cerulean'\ngame 'gta5'\n\nclient_script 'dist/client/*.client.js'\n\nserver_script 'dist/server/*.server.js'"
   
-  const defaultData = "fx_verison 'adamant'\ngame 'gta5'\n\nclient_script 'client/client.js'\n\nserver_script 'server/server.js'";
+  const defaultData = "fx_verison 'cerulean'\ngame 'gta5'\n\nclient_script 'client/client.js'\n\nserver_script 'server/server.js'";
   
   // THIS WILL HAVE CHEKCKS IF IT WILL CREATE STUFF FOR TYEPESCIPT OR NOT
 
