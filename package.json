@@ -1,9 +1,8 @@
 {
   "name": "create-fivem-app",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "CLI tool to create JS/TS resources for FiveM",
   "main": "index.js",
-  "private": "true",
   "bin": {
     "cfa-create": "./dist/index.js"
   },
