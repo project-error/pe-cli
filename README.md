@@ -15,4 +15,4 @@ yarn global add create-fivem-app
 ```
 
 ### Commands
-Run `cfa-create` in your termial to start.
+Run `cfa-create` in your terminal to start.

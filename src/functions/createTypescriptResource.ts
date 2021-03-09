@@ -8,7 +8,7 @@ const createTypescriptResource = (
 ) => {
   const resourcePath = path.resolve(resourceName);
 
-  createEssentials(resourcePath, resourceName, tsPackages, true) // true means that it is typescript
+  createEssentials(resourcePath, resourceName, tsPackages, true);
   
   // creating template
   installTemplate(resourcePath, tsPackages, true);
