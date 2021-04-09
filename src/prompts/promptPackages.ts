@@ -1,11 +1,15 @@
 import inquirer from "inquirer";
 import { SectionLine } from '../utils'
+import { supportedLanguage } from '../types/index';
 
-const promptPackages = (language: "JavaScript" | "TypeScript") => {
+const promptPackages = (language: supportedLanguage) => {
   if (language === 'JavaScript') {
     return jsPackages()
   }
-  return tsPackages()
+  if (language === 'TypeScript') {
+    return tsPackages()
+  }
+  return inquirer.prompt([])
 }
 
 const jsPackages = () => {
