@@ -30,7 +30,9 @@ const installTemplate = (resourcePath, packages, isTypescript) => {
             fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/server/tsconfig.json`, `${resourcePath}/server/tsconfig.json`);
         }
         else {
-            // USING JAVASCRIPT
+            // USING JAVASCRIPT 
+            // I'd like to change the js structure. Users should be able to select packages as well,
+            // if they don't we don't create a webpack at all.
             fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/js/package.json`, `${resourcePath}/package.json`);
             fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/js/webpack.config.js`, `${resourcePath}/webpack.config.js`);
         }

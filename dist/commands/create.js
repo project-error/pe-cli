@@ -9,7 +9,6 @@ const promptResource_1 = __importDefault(require("../prompts/promptResource"));
 const promptPackages_1 = __importDefault(require("../prompts/promptPackages"));
 const createTypescriptResource_1 = __importDefault(require("../functions/createTypescriptResource"));
 const createJavascriptResource_1 = __importDefault(require("../functions/createJavascriptResource"));
-//import createLuaResource from '../functions/createLuaResource';
 // Create command functionality
 const createCommand = async () => {
     const resourceName = await promptResource_1.default();
