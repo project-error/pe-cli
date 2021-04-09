@@ -14,13 +14,13 @@ export const createEssentials = (
   
   // THIS WILL HAVE CHEKCKS IF IT WILL CREATE STUFF FOR TYEPESCIPT OR NOT
 
-  const spinner = ora(`Creating ${resourceName} folder!`).start();
+  const spinner = ora(`Creating ${resourceName} resource!`).start();
   try {
     // Creating the folder
     fs.mkdirSync(resourcePath);
-    spinner.succeed("Successfully created resources folder!");
+    spinner.succeed("Successfully created resource!");
   } catch (error) {
-    spinner.fail("Failed to create folder!");
+    spinner.fail("Failed to create resource!");
   }
 
   spinner.text = "Creating fxmanifest!";
@@ -44,15 +44,15 @@ export const createEssentials = (
     fs.mkdirSync(`${resourcePath}/server`);
 
     if (isTypescript) {
-      fs.writeFileSync(`${resourcePath}/client/client.ts`, "// Start coding");
+      fs.writeFileSync(`${resourcePath}/client/client.ts`, "// Start coding!");
       fs.writeFileSync(`${resourcePath}/server/server.ts`, "// Start coding!");
     } else {
-      fs.writeFileSync(`${resourcePath}/client/client.js`, "// Start coding");
+      fs.writeFileSync(`${resourcePath}/client/client.js`, "// Start coding!");
       fs.writeFileSync(`${resourcePath}/server/server.js`, "// Start coding!");
     }
 
     spinner.succeed("Successfully created clinet and server script!");
   } catch (error) {
-    spinner.fail("Failed to create client file!");
+    spinner.fail("Failed to create files!");
   }
 };

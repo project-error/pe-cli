@@ -45,7 +45,10 @@ export const installTemplate = (
         `${resourcePath}/server/tsconfig.json`
       );
     } else {
-      // USING JAVASCRIPT
+      // USING JAVASCRIPT 
+      // I'd like to change the js structure. Users should be able to select packages as well,
+      // if they don't we don't create a webpack at all.
+      
       fs.copyFileSync(
         `${resourcePath}/cfa-templates/js/package.json`,
         `${resourcePath}/package.json`
