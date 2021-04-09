@@ -8,7 +8,7 @@ const essentials_1 = require("./tools/essentials");
 const github_1 = require("./tools/github");
 const createJavascriptResource = (resourceName, packages) => {
     const resourcePath = path_1.default.resolve(resourceName);
-    essentials_1.createEssentials(resourcePath, resourceName, packages, false); // false means not typescript
+    essentials_1.createEssentials(resourcePath, resourceName, packages, false);
     if (packages.length > 0) {
         github_1.installTemplate(resourcePath, packages, false);
     }

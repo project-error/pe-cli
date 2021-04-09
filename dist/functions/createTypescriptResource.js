@@ -8,7 +8,7 @@ const essentials_1 = require("./tools/essentials");
 const github_1 = require("./tools/github");
 const createTypescriptResource = (resourceName, tsPackages) => {
     const resourcePath = path_1.default.resolve(resourceName);
-    essentials_1.createEssentials(resourcePath, resourceName, tsPackages, true); // true means that it is typescript
+    essentials_1.createEssentials(resourcePath, resourceName, tsPackages, true);
     // creating template
     github_1.installTemplate(resourcePath, tsPackages, true);
 };

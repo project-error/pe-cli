@@ -25,15 +25,6 @@ const jsPackages = () => {
                 {
                     name: "Prettier"
                 },
-                {
-                    name: "OtherPackage3"
-                },
-                {
-                    name: "OtherPackage4"
-                },
-                {
-                    name: "OtherPackage5"
-                },
                 new inquirer_1.default.Separator(utils_1.SectionLine)
             ]
         }

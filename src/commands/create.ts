@@ -3,8 +3,6 @@ import promptResource from '../prompts/promptResource';
 import promptPackages from '../prompts/promptPackages'
 import createTypescriptResource from '../functions/createTypescriptResource';
 import createJavascriptResource from '../functions/createJavascriptResource';
-//import createLuaResource from '../functions/createLuaResource';
-
 // Create command functionality
 export const createCommand = async () => {
   const resourceName = await promptResource()
