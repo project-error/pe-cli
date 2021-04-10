@@ -2,12 +2,13 @@ import fs from "fs";
 import shell from "shelljs";
 import ora from "ora";
 import rimraf from "rimraf";
+import { supportedLanguage } from '../../types/index';
 
-export const installTemplate = (
+export const installTemplate = async (
   resourcePath: string,
   packages: string[],
-  isTypescript: boolean
-) => {
+  language: supportedLanguage
+): Promise<void> => {
   // CLONING REPO
 
   try {
@@ -26,45 +27,14 @@ export const installTemplate = (
   // COPYING FILES AND ADDING THEM IN THE NEW RESOURCE PATH
   try {
     // USING TYPESCRIPT
-    if (isTypescript) {
-      fs.copyFileSync(
-        `${resourcePath}/cfa-templates/ts/package.json`,
-        `${resourcePath}/package.json`
-      );
-      fs.copyFileSync(
-        `${resourcePath}/cfa-templates/ts/webpack.config.js`,
-        `${resourcePath}/webpack.config.js`
-      );
-      // tsconfig
-      fs.copyFileSync(
-        `${resourcePath}/cfa-templates/ts/client/tsconfig.json`,
-        `${resourcePath}/client/tsconfig.json`
-      );
-      fs.copyFileSync(
-        `${resourcePath}/cfa-templates/ts/server/tsconfig.json`,
-        `${resourcePath}/server/tsconfig.json`
-      );
-    } else {
-      // USING JAVASCRIPT 
-      // I'd like to change the js structure. Users should be able to select packages as well,
-      // if they don't we don't create a webpack at all.
-      
-      fs.copyFileSync(
-        `${resourcePath}/cfa-templates/js/package.json`,
-        `${resourcePath}/package.json`
-      );
-      fs.copyFileSync(
-        `${resourcePath}/cfa-templates/js/webpack.config.js`,
-        `${resourcePath}/webpack.config.js`
-      );
-    }
+    const { copyFiles } = await import(`./copiers/${language}`)
+    copyFiles(resourcePath)
   } catch (error) {
     console.log(error);
     spinner.fail();
   }
   rimraf.sync(`${resourcePath}/cfa-templates`);
 
-  
   spinner.succeed("Successfully added default packages");
   try {
     if (shell.exec(`cd ${resourcePath} && yarn --silent`).code !== 0) {

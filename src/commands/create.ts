@@ -1,21 +1,18 @@
 import promptLanguage from '../prompts/promptLanguage'
 import promptResource from '../prompts/promptResource';
 import promptPackages from '../prompts/promptPackages'
-import createTypescriptResource from '../functions/createTypescriptResource';
-import createJavascriptResource from '../functions/createJavascriptResource';
+import { supportedLanguage, hasPackages } from '../types/index';
+import createResource from '../functions/createResource';
 // Create command functionality
 export const createCommand = async () => {
   const resourceName = await promptResource()
   const language = await promptLanguage()
-  const packages = await promptPackages(language.val)
-
-  if (language.val === 'TypeScript') {
-    createTypescriptResource(resourceName.val, packages.val)
+  let packages = null
+  if (hasPackages.includes(language.val)) {
+    packages = await promptPackages(language.val)
   }
 
-  if (language.val === "JavaScript") {
-    createJavascriptResource(resourceName.val, packages.val)
-  }
+  createResource(resourceName.val, language.val, packages ? packages.val : [])
 
   const resultObject = {
     language,
