@@ -9,7 +9,10 @@ const promptPackages = (language) => {
     if (language === 'JavaScript') {
         return jsPackages();
     }
-    return tsPackages();
+    if (language === 'TypeScript') {
+        return tsPackages();
+    }
+    return inquirer_1.default.prompt([]);
 };
 const jsPackages = () => {
     return inquirer_1.default.prompt([

@@ -1,1 +1,2 @@
-export declare const createEssentials: (resourcePath: string, resourceName: string, packages: string[], isTypescript: boolean) => void;
+import { supportedLanguage } from '../../types/index';
+export declare const createEssentials: (resourcePath: string, resourceName: string, language: supportedLanguage) => Promise<void>;

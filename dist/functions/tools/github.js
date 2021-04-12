@@ -1,14 +1,32 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.installTemplate = void 0;
-const fs_1 = __importDefault(require("fs"));
 const shelljs_1 = __importDefault(require("shelljs"));
 const ora_1 = __importDefault(require("ora"));
 const rimraf_1 = __importDefault(require("rimraf"));
-const installTemplate = (resourcePath, packages, isTypescript) => {
+const installTemplate = async (resourcePath, packages, language) => {
     // CLONING REPO
     try {
         if (shelljs_1.default.exec(`cd ${resourcePath} && git clone https://github.com/itschip/cfa-templates.git`).code !== 0) {
@@ -22,20 +40,8 @@ const installTemplate = (resourcePath, packages, isTypescript) => {
     // COPYING FILES AND ADDING THEM IN THE NEW RESOURCE PATH
     try {
         // USING TYPESCRIPT
-        if (isTypescript) {
-            fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/package.json`, `${resourcePath}/package.json`);
-            fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/webpack.config.js`, `${resourcePath}/webpack.config.js`);
-            // tsconfig
-            fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/client/tsconfig.json`, `${resourcePath}/client/tsconfig.json`);
-            fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/server/tsconfig.json`, `${resourcePath}/server/tsconfig.json`);
-        }
-        else {
-            // USING JAVASCRIPT 
-            // I'd like to change the js structure. Users should be able to select packages as well,
-            // if they don't we don't create a webpack at all.
-            fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/js/package.json`, `${resourcePath}/package.json`);
-            fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/js/webpack.config.js`, `${resourcePath}/webpack.config.js`);
-        }
+        const { copyFiles } = await Promise.resolve().then(() => __importStar(require(`./copiers/${language}`)));
+        copyFiles(resourcePath);
     }
     catch (error) {
         console.log(error);

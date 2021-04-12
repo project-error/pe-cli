@@ -20,6 +20,9 @@ const promptLanguage = () => inquirer_1.default.prompt([
             {
                 name: 'JavaScript'
             },
+            {
+                name: 'Lua'
+            },
             new inquirer_1.default.Separator(utils_1.SectionLine),
         ]
     }
