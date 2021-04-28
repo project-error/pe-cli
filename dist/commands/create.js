@@ -9,9 +9,15 @@ const promptResource_1 = __importDefault(require("../prompts/promptResource"));
 const promptPackages_1 = __importDefault(require("../prompts/promptPackages"));
 const index_1 = require("../types/index");
 const createResource_1 = __importDefault(require("../functions/createResource"));
+const cloneResource_1 = require("../functions/cloneResource");
 // Create command functionality
 const createCommand = async () => {
+    const getUrlParam = process.argv.find(arg => arg.startsWith('http'));
     const resourceName = await promptResource_1.default();
+    if (getUrlParam != null) {
+        await cloneResource_1.cloneResource(resourceName.val, getUrlParam);
+        return;
+    }
     const language = await promptLanguage_1.default();
     let packages = null;
     if (index_1.hasPackages.includes(language.val)) {
