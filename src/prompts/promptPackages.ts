@@ -21,10 +21,10 @@ const jsPackages = () => {
       choices: [
         new inquirer.Separator(SectionLine),
         {
-          name: "ESLint"
+          name: "eslint"
         },
         {
-          name: "Prettier"
+          name: "prettier"
         },
         new inquirer.Separator(SectionLine)
       ]
