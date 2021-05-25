@@ -8,7 +8,7 @@ const createResource = async (resourceName: string, language: supportedLanguage,
 
   await createEssentials(resourcePath, resourceName, language);
 
-  installTemplate(resourcePath, packages, language);
+  await installTemplate(resourcePath, packages, language);
 };
 
 export default createResource;
