@@ -6,8 +6,6 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -27,4 +25,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn
     - run: tsc
-    - run: npm publish
+    - run: npm run publish
