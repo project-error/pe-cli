@@ -25,4 +25,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn
     - run: tsc
-    - run: npm run publish
+    - run: npm publish
