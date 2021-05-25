@@ -1,6 +1,6 @@
 {
   "name": "create-fivem-app",
-  "version": "2.2.2",
+  "version": "2.2.4",
   "description": "CLI tool to create JS/TS resources for FiveM",
   "main": "index.js",
   "bin": {
