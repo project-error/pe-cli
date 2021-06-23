@@ -41,9 +41,6 @@ const tsPackages = () => {
       choices: [
         new inquirer.Separator(SectionLine),
         {
-          name: "TypeORM"
-        },
-        {
           name: "fivem-js"
         },
         {
