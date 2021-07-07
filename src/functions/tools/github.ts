@@ -35,11 +35,11 @@ export const installTemplate = async (
   }
   rimraf.sync(`${resourcePath}/cfa-templates`);
 
-  spinner.succeed("Successfully added default packages");
   try {
     if (shell.exec(`cd ${resourcePath} && yarn --silent`).code !== 0) {
       shell.exit(1);
     }
+    spinner.succeed("Successfully added default packages");
   } catch (error) {
     console.log(error);
   }

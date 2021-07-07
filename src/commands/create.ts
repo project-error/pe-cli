@@ -16,6 +16,7 @@ export const createCommand = async () => {
   }
 
   const language = await promptLanguage()
+  console.log(language)
   let packages = null
   if (hasPackages.includes(language.val)) {
     packages = await promptPackages(language.val)
