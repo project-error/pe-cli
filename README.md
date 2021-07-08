@@ -16,3 +16,14 @@ yarn global add @project-error/cli
 
 ### Commands
 Run `pe-create` in your terminal to start.
+
+### Features
+Languages
+- TypeScript
+- JavaScript
+- Lua
+
+#### We also include options for UI Frameworks.
+Currently supports 
+- React with TypeScript
+- React with JavaScript
