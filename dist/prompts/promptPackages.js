@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const inquirer_1 = __importDefault(require("inquirer"));
 const utils_1 = require("../utils");
 const promptPackages = (language) => {
-    console.log('chosen language', language);
     if (language === 'JavaScript' || language === 'javascript_react') {
         return jsPackages();
     }
