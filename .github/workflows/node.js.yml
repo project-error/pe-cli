@@ -28,9 +28,9 @@ jobs:
         tsc
     - name: Commit dist folder
       run: |
-        git config --local user.email "{{ secrets.BOT_EMAIL }}"
+        git config --local user.email ${{ secrets.BOT_EMAIL }}
         git config --local user.name "itschip"
-        git config --local user.password "{{ secrets.BOT_PASSWORD }}"
+        git config --local user.password ${{ secrets.BOT_PASSWORD }}
         git add dist
         git commit -m "Update production"
     - name: Push changes
