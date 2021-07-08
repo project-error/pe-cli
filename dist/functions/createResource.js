@@ -9,9 +9,7 @@ const github_1 = require("./tools/github");
 const createResource = async (resourceName, language, packages) => {
     const resourcePath = path_1.default.resolve(resourceName);
     await essentials_1.createEssentials(resourcePath, resourceName, language);
-    if (packages.length > 0) {
-        github_1.installTemplate(resourcePath, packages, language);
-    }
+    await github_1.installTemplate(resourcePath, packages, language);
 };
 exports.default = createResource;
 //# sourceMappingURL=createResource.js.map
