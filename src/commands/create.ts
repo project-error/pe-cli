@@ -4,6 +4,8 @@ import promptPackages from '../prompts/promptPackages'
 import { supportedLanguage, hasPackages } from '../types/index';
 import createResource from '../functions/createResource';
 import { cloneResource } from '../functions/cloneResource';
+import promptUi from '../prompts/promptUi';
+
 // Create command functionality
 export const createCommand = async () => {
   const getUrlParam = process.argv.find(arg => arg.startsWith('http'))
@@ -22,12 +24,15 @@ export const createCommand = async () => {
     packages = await promptPackages(language.val)
   }
 
-  createResource(resourceName.val, language.val, packages ? packages.val : [])
+  const uiFramework = await promptUi()
+
+  await createResource(resourceName.val, language.val, packages ? packages.val : [], uiFramework.val)
 
   const resultObject = {
     language,
     resourceName,
-    packages
+    packages,
+    uiFramework
   }
 
   console.log("Result of prompts:")
