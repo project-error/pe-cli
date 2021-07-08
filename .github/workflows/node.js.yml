@@ -26,18 +26,6 @@ jobs:
       run: |
         yarn
         tsc
-    - name: Commit dist folder
-      run: |
-        git config --local user.email ${{ secrets.BOT_EMAIL }}
-        git config --local user.name "itschip"
-        git config --local user.password ${{ secrets.BOT_PASSWORD }}
-        git add dist
-        git commit -m "Update production"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.RELEASE_TOKEN }}
-        branch: 'master'
     - name:  'Automated Version Bump'
       uses:  'phips28/gh-action-bump-version@master'
       env:
