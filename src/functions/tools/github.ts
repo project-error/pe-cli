@@ -7,7 +7,8 @@ import { supportedLanguage } from '../../types/index';
 export const installTemplate = async (
   resourcePath: string,
   packages: string[],
-  language: supportedLanguage
+  language: supportedLanguage,
+  uiFramework: string
 ): Promise<void> => {
   // CLONING REPO
 
@@ -28,7 +29,7 @@ export const installTemplate = async (
   try {
     // USING TYPESCRIPT
     const { copyFiles } = await import(`./copiers/${language}`)
-    copyFiles(resourcePath)
+    copyFiles(resourcePath, uiFramework)
   } catch (error) {
     console.log(error);
     spinner.fail();
@@ -39,7 +40,15 @@ export const installTemplate = async (
     if (shell.exec(`cd ${resourcePath} && yarn --silent`).code !== 0) {
       shell.exit(1);
     }
+
+    if (uiFramework !== 'none') {
+      if (shell.exec(`cd ${resourcePath}/ui && yarn --silent`).code !== 0) {
+        shell.exit(1);
+      }
+    }
+
     spinner.succeed("Successfully added default packages");
+
   } catch (error) {
     console.log(error);
   }

@@ -6,9 +6,9 @@ import { supportedLanguage } from '../../types/index';
 export const createEssentials = async (
   resourcePath: string,
   resourceName: string,
-  language: supportedLanguage
+  language: supportedLanguage,
+  uiFramework: string
   ) => {
-    // THIS WILL HAVE CHEKCKS IF IT WILL CREATE STUFF FOR TYEPESCIPT OR NOT
     const spinner = ora(`Creating ${resourceName} resource!`).start();
     try {
       // Creating the folder
@@ -20,10 +20,15 @@ export const createEssentials = async (
 
     spinner.text = "Creating fxmanifest!";
     try {
-      // CREATING THE FXMANIFEST IF THE USER CHOOSE TYPESCRIPT
-      // OR IF THE USER CHOOSES JS AND PACKAGES
-      const { fxmanifest } = await import(`../../stubs/${language}/fxmanifest.stub`)
-      fs.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf(fxmanifest, resourceName));
+
+      if (uiFramework !== 'none') {
+        const { fxmanifest } = await import(`../../stubs/${language}/fxmanifest_react.stub`)
+        fs.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf(fxmanifest, resourceName));
+
+      } else {
+        const { fxmanifest } = await import(`../../stubs/${language}/fxmanifest.stub`)
+        fs.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf(fxmanifest, resourceName));
+      }
 
       spinner.succeed("Successfully created fxmanifest.lua");
     } catch (error) {
@@ -35,6 +40,8 @@ export const createEssentials = async (
     try {
       fs.mkdirSync(`${resourcePath}/client`);
       fs.mkdirSync(`${resourcePath}/server`);
+
+      if (uiFramework !== 'none') fs.mkdirSync(`${resourcePath}/ui`)
 
       const { createFiles } = await import(`./creators/${language}`)
 

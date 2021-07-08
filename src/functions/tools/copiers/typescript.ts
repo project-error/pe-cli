@@ -1,6 +1,7 @@
 import fs from "fs";
+import { copySync } from 'fs-extra';
 
-export const copyFiles = (resourcePath: string): void => {
+export const copyFiles = (resourcePath: string, uiFramework: string): void => {
   fs.copyFileSync(
     `${resourcePath}/cfa-templates/ts/package.json`,
     `${resourcePath}/package.json`
@@ -18,4 +19,11 @@ export const copyFiles = (resourcePath: string): void => {
     `${resourcePath}/cfa-templates/ts/server/tsconfig.json`,
     `${resourcePath}/server/tsconfig.json`
   );
+
+  if (uiFramework !== 'none') {
+    copySync(
+        `${resourcePath}/cfa-templates/${uiFramework}`,
+        `${resourcePath}/ui`
+    )
+  }
 }

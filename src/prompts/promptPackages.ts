@@ -3,10 +3,10 @@ import { SectionLine } from '../utils'
 import { supportedLanguage } from '../types/index';
 
 const promptPackages = (language: supportedLanguage) => {
-  if (language === 'JavaScript' || language === 'javascript_react') {
+  if (language === 'JavaScript') {
     return jsPackages()
   }
-  if (language === 'TypeScript' || language === 'typescript_react') {
+  if (language === 'TypeScript') {
     return tsPackages()
   }
   return inquirer.prompt([])
