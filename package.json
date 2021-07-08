@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itschip/create-fivem-app.git"
+    "url": "git+https://github.com/project-error/pe-cli.git"
   },
   "author": "Project Error",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itschip/create-fivem-app/issues"
+    "url": "https://github.com/project-error/pe-cli/issues"
   },
-  "homepage": "https://github.com/itschip/create-fivem-app#readme",
+  "homepage": "https://github.com/project-error/pe-cli#readme",
   "dependencies": {
     "@types/rimraf": "^3.0.0",
     "axios": "^0.21.1",
