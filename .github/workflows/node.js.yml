@@ -28,7 +28,7 @@ jobs:
         tsc
     - name: Commit dist folder
       run: |
-        git config --local user.email {{ secrets.BOT_EMAIL }}
+        git config --local user.email "{{ secrets.BOT_EMAIL }}"
         git config --locla user.name "itschip"
         git config --local user.password "{{ secrets.BOT_PASSWORD }}"
         git add dist
