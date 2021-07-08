@@ -22,14 +22,6 @@ const promptLanguage = () => inquirer.prompt([
         name: 'Lua',
         value: 'Lua'
       },
-      {
-        name: 'Javascript with React',
-        value: 'javascript_react'
-      },
-      {
-        name: 'Typescript with React',
-        value: 'typescript_react'
-      },
       new inquirer.Separator(SectionLine),
     ]
   }

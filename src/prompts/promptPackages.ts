@@ -3,7 +3,6 @@ import { SectionLine } from '../utils'
 import { supportedLanguage } from '../types/index';
 
 const promptPackages = (language: supportedLanguage) => {
-  console.log('chosen language', language)
   if (language === 'JavaScript' || language === 'javascript_react') {
     return jsPackages()
   }
