@@ -1,10 +1,10 @@
 {
   "name": "create-fivem-app",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "CLI tool to create JS/TS resources for FiveM",
   "main": "index.js",
   "bin": {
-    "cfa-create": "./dist/index.js"
+    "cfa-create": "dist/index.js"
   },
   "scripts": {
     "dev": "tsnd --respawn src/index.ts --ignonore-watch ./notes",
