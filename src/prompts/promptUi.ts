@@ -6,7 +6,7 @@ const promptUi = () => {
     {
       type: 'list',
       name: 'val',
-      message: 'Do you want to include a UI framework? Use [SPACE] to select',
+      message: 'Do you want to include a UI framework?',
       choices: [
         new inquirer.Separator(SectionLine),
         {
