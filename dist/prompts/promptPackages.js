@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const inquirer_1 = __importDefault(require("inquirer"));
 const utils_1 = require("../utils");
 const promptPackages = (language) => {
-    if (language === 'JavaScript' || language === 'javascript_react') {
+    if (language === 'JavaScript') {
         return jsPackages();
     }
-    if (language === 'TypeScript' || language === 'typescript_react') {
+    if (language === 'TypeScript') {
         return tsPackages();
     }
     return inquirer_1.default.prompt([]);

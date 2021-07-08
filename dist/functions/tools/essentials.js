@@ -26,8 +26,7 @@ exports.createEssentials = void 0;
 const fs_1 = __importDefault(require("fs"));
 const ora_1 = __importDefault(require("ora"));
 const sprintf_js_1 = require("sprintf-js");
-const createEssentials = async (resourcePath, resourceName, language) => {
-    // THIS WILL HAVE CHEKCKS IF IT WILL CREATE STUFF FOR TYEPESCIPT OR NOT
+const createEssentials = async (resourcePath, resourceName, language, uiFramework) => {
     const spinner = ora_1.default(`Creating ${resourceName} resource!`).start();
     try {
         // Creating the folder
@@ -39,10 +38,14 @@ const createEssentials = async (resourcePath, resourceName, language) => {
     }
     spinner.text = "Creating fxmanifest!";
     try {
-        // CREATING THE FXMANIFEST IF THE USER CHOOSE TYPESCRIPT
-        // OR IF THE USER CHOOSES JS AND PACKAGES
-        const { fxmanifest } = await Promise.resolve().then(() => __importStar(require(`../../stubs/${language}/fxmanifest.stub`)));
-        fs_1.default.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf_js_1.sprintf(fxmanifest, resourceName));
+        if (uiFramework !== 'none') {
+            const { fxmanifest } = await Promise.resolve().then(() => __importStar(require(`../../stubs/${language}/fxmanifest_react.stub`)));
+            fs_1.default.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf_js_1.sprintf(fxmanifest, resourceName));
+        }
+        else {
+            const { fxmanifest } = await Promise.resolve().then(() => __importStar(require(`../../stubs/${language}/fxmanifest.stub`)));
+            fs_1.default.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf_js_1.sprintf(fxmanifest, resourceName));
+        }
         spinner.succeed("Successfully created fxmanifest.lua");
     }
     catch (error) {
@@ -53,6 +56,8 @@ const createEssentials = async (resourcePath, resourceName, language) => {
     try {
         fs_1.default.mkdirSync(`${resourcePath}/client`);
         fs_1.default.mkdirSync(`${resourcePath}/server`);
+        if (uiFramework !== 'none')
+            fs_1.default.mkdirSync(`${resourcePath}/ui`);
         const { createFiles } = await Promise.resolve().then(() => __importStar(require(`./creators/${language}`)));
         createFiles(resourcePath);
         spinner.succeed("Successfully created client and server script!");

@@ -10,6 +10,7 @@ const promptPackages_1 = __importDefault(require("../prompts/promptPackages"));
 const index_1 = require("../types/index");
 const createResource_1 = __importDefault(require("../functions/createResource"));
 const cloneResource_1 = require("../functions/cloneResource");
+const promptUi_1 = __importDefault(require("../prompts/promptUi"));
 // Create command functionality
 const createCommand = async () => {
     const getUrlParam = process.argv.find(arg => arg.startsWith('http'));
@@ -24,11 +25,13 @@ const createCommand = async () => {
     if (index_1.hasPackages.includes(language.val)) {
         packages = await promptPackages_1.default(language.val);
     }
-    createResource_1.default(resourceName.val, language.val, packages ? packages.val : []);
+    const uiFramework = await promptUi_1.default();
+    await createResource_1.default(resourceName.val, language.val, packages ? packages.val : [], uiFramework.val);
     const resultObject = {
         language,
         resourceName,
-        packages
+        packages,
+        uiFramework
     };
     console.log("Result of prompts:");
     console.log(resultObject);

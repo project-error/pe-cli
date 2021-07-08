@@ -26,7 +26,7 @@ exports.installTemplate = void 0;
 const shelljs_1 = __importDefault(require("shelljs"));
 const ora_1 = __importDefault(require("ora"));
 const rimraf_1 = __importDefault(require("rimraf"));
-const installTemplate = async (resourcePath, packages, language) => {
+const installTemplate = async (resourcePath, packages, language, uiFramework) => {
     // CLONING REPO
     try {
         if (shelljs_1.default.exec(`cd ${resourcePath} && git clone https://github.com/itschip/cfa-templates.git`).code !== 0) {
@@ -41,7 +41,7 @@ const installTemplate = async (resourcePath, packages, language) => {
     try {
         // USING TYPESCRIPT
         const { copyFiles } = await Promise.resolve().then(() => __importStar(require(`./copiers/${language}`)));
-        copyFiles(resourcePath);
+        copyFiles(resourcePath, uiFramework);
     }
     catch (error) {
         console.log(error);
@@ -51,6 +51,11 @@ const installTemplate = async (resourcePath, packages, language) => {
     try {
         if (shelljs_1.default.exec(`cd ${resourcePath} && yarn --silent`).code !== 0) {
             shelljs_1.default.exit(1);
+        }
+        if (uiFramework !== 'none') {
+            if (shelljs_1.default.exec(`cd ${resourcePath}/ui && yarn --silent`).code !== 0) {
+                shelljs_1.default.exit(1);
+            }
         }
         spinner.succeed("Successfully added default packages");
     }
