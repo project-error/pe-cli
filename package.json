@@ -1,10 +1,10 @@
 {
-  "name": "create-fivem-app",
+  "name": "@project-error/cli",
   "version": "2.5.1",
-  "description": "CLI tool to create JS/TS resources for FiveM",
+  "description": "A CLI to quickly scaffold and boilerplate FiveM resources",
   "main": "index.js",
   "bin": {
-    "cfa-create": "dist/index.js"
+    "pe-create": "dist/index.js"
   },
   "scripts": {
     "dev": "tsnd --respawn src/index.ts --ignonore-watch ./notes",
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/itschip/create-fivem-app.git"
   },
-  "author": "taso & chip",
+  "author": "Project Error",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/itschip/create-fivem-app/issues"
