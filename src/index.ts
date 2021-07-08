@@ -10,7 +10,7 @@ const ui = new inquirer.ui.BottomBar();
 
 console.log(
   chalk.red(
-    figlet.textSync('Create-FiveM-App',  { font: 'Standard', horizontalLayout: 'fitted' })
+    figlet.textSync('Project Error',  { font: 'Standard', horizontalLayout: 'fitted' })
   ),
 )
 

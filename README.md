@@ -1,18 +1,18 @@
-# Create FiveM App
-Create FiveM App is a Command Line Interface (CLI) that can be used to quickly scaffold
+# Project Error CLI
+@project-error/cli is a Command Line Interface (CLI) that can be used to quickly scaffold
 and boilerplate a FiveM resource using the options specified.
 
-### Made by TasoOneAsia and ItsChip
+### Made by Project Error
 
 ### Installation
 **NPM**
 ```
-npm i create-fivem-app --global
+npm i @project-error/cli --global
 ```
 **Yarn**
 ```
-yarn global add create-fivem-app
+yarn global add @project-error/cli
 ```
 
 ### Commands
-Run `cfa-create` in your terminal to start.
+Run `pe-create` in your terminal to start.
