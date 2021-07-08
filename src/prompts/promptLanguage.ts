@@ -11,13 +11,24 @@ const promptLanguage = () => inquirer.prompt([
     choices: [
       new inquirer.Separator(SectionLine),
       {
-        name: 'TypeScript'
+        name: 'TypeScript',
+        value: 'TypeScript',
       },
       {
-        name: 'JavaScript'
+        name: 'JavaScript',
+        value: 'JavaScript'
       },
       {
-        name: 'Lua'
+        name: 'Lua',
+        value: 'Lua'
+      },
+      {
+        name: 'Javascript with React',
+        value: 'javascript_react'
+      },
+      {
+        name: 'Typescript with React',
+        value: 'typescript_react'
       },
       new inquirer.Separator(SectionLine),
     ]

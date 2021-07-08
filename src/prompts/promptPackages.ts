@@ -3,10 +3,11 @@ import { SectionLine } from '../utils'
 import { supportedLanguage } from '../types/index';
 
 const promptPackages = (language: supportedLanguage) => {
-  if (language === 'JavaScript') {
+  console.log('chosen language', language)
+  if (language === 'JavaScript' || language === 'javascript_react') {
     return jsPackages()
   }
-  if (language === 'TypeScript') {
+  if (language === 'TypeScript' || language === 'typescript_react') {
     return tsPackages()
   }
   return inquirer.prompt([])
@@ -40,9 +41,6 @@ const tsPackages = () => {
       message: "What TypeScript packages would you like to use with this project?",
       choices: [
         new inquirer.Separator(SectionLine),
-        {
-          name: "TypeORM"
-        },
         {
           name: "fivem-js"
         },
