@@ -31,6 +31,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        commit-message: Bump version to {{ version }} [skip ci]
+        target-branch: 'master'
         skip-tag:  'true'
     - name: Commit dist folder
       run: |
