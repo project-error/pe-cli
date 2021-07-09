@@ -1,0 +1,9 @@
+node_modules
+.idea
+dist
+notes
+.github
+*.md
+*.json
+.eslintrc
+.eslintignore

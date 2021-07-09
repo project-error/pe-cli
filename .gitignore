@@ -1,3 +1,4 @@
 node_modules
 .idea
 template
+yarn-error.log

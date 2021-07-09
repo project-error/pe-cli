@@ -6,4 +6,4 @@ name '%s'
 
 client_script 'client/client.js'
 
-server_script 'server/server.js'`
+server_script 'server/server.js'`;

@@ -14,4 +14,4 @@ files {
   'html/index.html',
   'html/index.css',
   'html/index.js'
-}`
+}`;

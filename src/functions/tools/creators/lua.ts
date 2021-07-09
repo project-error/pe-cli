@@ -1,6 +1,6 @@
-import fs from "fs";
+import fs from 'fs';
 
 export const createFiles = (resourcePath: string): void => {
-  fs.writeFileSync(`${resourcePath}/client/client.lua`, "-- Start coding!");
-  fs.writeFileSync(`${resourcePath}/server/server.lua`, "-- Start coding!");
-}
+  fs.writeFileSync(`${resourcePath}/client/client.lua`, '-- Start coding!');
+  fs.writeFileSync(`${resourcePath}/server/server.lua`, '-- Start coding!');
+};
