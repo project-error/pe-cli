@@ -1,6 +1,6 @@
 {
   "name": "@project-error/cli",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "description": "A CLI to quickly scaffold and boilerplate FiveM resources",
   "main": "index.js",
   "bin": {
