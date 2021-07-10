@@ -9,13 +9,15 @@ export const createEssentials = async (
   language: supportedLanguage,
   uiFramework: string,
 ) => {
-  const spinner = ora(`Creating ${resourceName} resource!`).start();
+  const spinner = ora('Loading universe!').start();
   try {
+    spinner.text = `Creating ${resourceName} resource!`;
     // Creating the folder
     fs.mkdirSync(resourcePath);
-    spinner.succeed('Successfully created resource!');
+    spinner.succeed('Successfully created resource path!');
   } catch (error) {
-    spinner.fail('Failed to create resource!');
+    spinner.fail('Failed to create resource path!');
+    return;
   }
 
   spinner.text = 'Creating fxmanifest!';
@@ -31,6 +33,7 @@ export const createEssentials = async (
     spinner.succeed('Successfully created fxmanifest.lua');
   } catch (error) {
     spinner.fail('Failed to create fxmanifest!');
+    return;
   }
 
   spinner.text = 'Creating client and server files!';
@@ -45,8 +48,9 @@ export const createEssentials = async (
 
     createFiles(resourcePath);
 
-    spinner.succeed('Successfully created client and server script!');
+    spinner.succeed('Successfully created essential files!');
   } catch (error) {
-    spinner.fail('Failed to create files!');
+    spinner.fail('Failed to create essential files!');
+    return;
   }
 };
