@@ -10,16 +10,16 @@ const promptUi = () => {
       choices: [
         new inquirer.Separator(SectionLine),
         {
+          name: 'None',
+          value: 'none',
+        },
+        {
           name: 'React with TypeScript',
           value: 'react_typescript',
         },
         {
           name: 'React with JavaScript',
           value: 'react_javascript',
-        },
-        {
-          name: 'None',
-          value: 'none',
         },
       ],
     },
