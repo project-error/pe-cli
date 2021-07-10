@@ -12,7 +12,7 @@ const createResource = async (resourceName, language, packages, uiFramework) => 
     await essentials_1.createEssentials(resourcePath, resourceName, language, uiFramework);
     await github_1.installTemplate(resourcePath, packages, language, uiFramework)
         .catch((e) => console.log(`Error in installing template. Error: ${e.message}`))
-        .then(() => console.log("Success!"));
+        .then(() => console.log('Success!'));
 };
 exports.default = createResource;
 //# sourceMappingURL=createResource.js.map

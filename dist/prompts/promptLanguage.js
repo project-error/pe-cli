@@ -20,15 +20,15 @@ const promptLanguage = () => inquirer_1.default.prompt([
             },
             {
                 name: 'JavaScript',
-                value: 'JavaScript'
+                value: 'JavaScript',
             },
             {
                 name: 'Lua',
-                value: 'Lua'
+                value: 'Lua',
             },
             new inquirer_1.default.Separator(utils_1.SectionLine),
-        ]
-    }
+        ],
+    },
 ]);
 exports.default = promptLanguage;
 //# sourceMappingURL=promptLanguage.js.map

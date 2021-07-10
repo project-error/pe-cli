@@ -13,7 +13,7 @@ const cloneResource_1 = require("../functions/cloneResource");
 const promptUi_1 = __importDefault(require("../prompts/promptUi"));
 // Create command functionality
 const createCommand = async () => {
-    const getUrlParam = process.argv.find(arg => arg.startsWith('http'));
+    const getUrlParam = process.argv.find((arg) => arg.startsWith('http'));
     const resourceName = await promptResource_1.default();
     if (getUrlParam != null) {
         await cloneResource_1.cloneResource(resourceName.val, getUrlParam);
@@ -31,9 +31,9 @@ const createCommand = async () => {
         language,
         resourceName,
         packages,
-        uiFramework
+        uiFramework,
     };
-    console.log("Result of prompts:");
+    console.log('Result of prompts:');
     console.log(resultObject);
     // At this point we take results and pass it to a function that actually uses the inputs to create
     // a resource

@@ -16,8 +16,8 @@ const promptResource = () => inquirer_1.default.prompt([
             else {
                 return 'Please fill out the resource name';
             }
-        }
-    }
+        },
+    },
 ]);
 exports.default = promptResource;
 //# sourceMappingURL=promptResource.js.map

@@ -17,43 +17,43 @@ const promptPackages = (language) => {
 const jsPackages = () => {
     return inquirer_1.default.prompt([
         {
-            type: "checkbox",
-            name: "val",
-            message: "What JavaScript packages would you like to use with this project?",
+            type: 'checkbox',
+            name: 'val',
+            message: 'What JavaScript packages would you like to use with this project?',
             choices: [
                 new inquirer_1.default.Separator(utils_1.SectionLine),
                 {
-                    name: "eslint"
+                    name: 'eslint',
                 },
                 {
-                    name: "prettier"
+                    name: 'prettier',
                 },
-                new inquirer_1.default.Separator(utils_1.SectionLine)
-            ]
-        }
+                new inquirer_1.default.Separator(utils_1.SectionLine),
+            ],
+        },
     ]);
 };
 // If the language is ts, th
 const tsPackages = () => {
     return inquirer_1.default.prompt([
         {
-            type: "checkbox",
-            name: "val",
-            message: "What TypeScript packages would you like to use with this project?",
+            type: 'checkbox',
+            name: 'val',
+            message: 'What TypeScript packages would you like to use with this project?',
             choices: [
                 new inquirer_1.default.Separator(utils_1.SectionLine),
                 {
-                    name: "fivem-js"
+                    name: 'fivem-js',
                 },
                 {
-                    name: "mysql2"
+                    name: 'mysql2',
                 },
                 {
-                    name: 'esx.js'
+                    name: 'esx.js',
                 },
-                new inquirer_1.default.Separator(utils_1.SectionLine)
-            ]
-        }
+                new inquirer_1.default.Separator(utils_1.SectionLine),
+            ],
+        },
     ]);
 };
 exports.default = promptPackages;

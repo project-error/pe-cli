@@ -15,18 +15,18 @@ const promptUi = () => {
                 new inquirer_1.default.Separator(utils_1.SectionLine),
                 {
                     name: 'React with TypeScript',
-                    value: 'react_typescript'
+                    value: 'react_typescript',
                 },
                 {
                     name: 'React with JavaScript',
-                    value: 'react_javascript'
+                    value: 'react_javascript',
                 },
                 {
                     name: 'None',
-                    value: 'none'
+                    value: 'none',
                 },
-            ]
-        }
+            ],
+        },
     ]);
 };
 exports.default = promptUi;
