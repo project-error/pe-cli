@@ -1,65 +1,81 @@
-import fs from "fs";
-import shell from "shelljs";
-import ora from "ora";
-import rimraf from "rimraf";
-import { supportedLanguage } from '../../types/index';
+import fs from 'fs';
+import shell, { cat } from 'shelljs';
+import ora from 'ora';
+import rimraf from 'rimraf';
+import { supportedLanguage } from '../../types';
 
 export const installTemplate = async (
   resourcePath: string,
   packages: string[],
   language: supportedLanguage,
-  uiFramework: string
+  uiFramework: string,
 ): Promise<void> => {
   // CLONING REPO
 
+  const spinner = ora('Cloning templates').start();
   try {
-    if (
-      shell.exec(
-        `cd ${resourcePath} && git clone https://github.com/itschip/cfa-templates.git`
-      ).code !== 0
-    ) {
+    if (!shell.which('git')) {
+      shell.echo('This script requires git');
       shell.exit(1);
     }
+
+    await shell.exec(
+      `cd ${resourcePath} && git clone https://github.com/itschip/cfa-templates.git`,
+      {
+        silent: true,
+      },
+    );
+
+    spinner.succeed('Successfully cloned templates');
   } catch (error) {
     console.log(error);
+    spinner.fail('Failed to clone templates');
   }
 
-  const spinner = ora("Adding packages and webpack").start();
-  // COPYING FILES AND ADDING THEM IN THE NEW RESOURCE PATH
   try {
     // USING TYPESCRIPT
-    const { copyFiles } = await import(`./copiers/${language}`)
-    copyFiles(resourcePath, uiFramework)
+    spinner.start('Copying files to resource');
+    const { copyFiles } = await import(`./copiers/${language}`);
+    copyFiles(resourcePath, uiFramework);
+    spinner.succeed('Successfully copied all files');
   } catch (error) {
     console.log(error);
-    spinner.fail();
+    spinner.fail('Failed to copy files!');
   }
   rimraf.sync(`${resourcePath}/cfa-templates`);
 
   try {
-    if (shell.exec(`cd ${resourcePath} && yarn --silent`).code !== 0) {
-      shell.exit(1);
+    spinner.start('Installing default packages');
+
+    try {
+      await shell.exec(`cd ${resourcePath} && yarn --silent`, { silent: true });
+      spinner.succeed('Successfully installed default packages');
+    } catch (err) {
+      spinner.fail('Failed to install default packages');
     }
 
     if (uiFramework !== 'none') {
-      if (shell.exec(`cd ${resourcePath}/ui && yarn --silent`).code !== 0) {
-        shell.exit(1);
+      spinner.start('Installing UI packages');
+      try {
+        await shell.exec(`cd ${resourcePath}/ui && yarn --silent`, { silent: true });
+        spinner.succeed('Successfully installed UI packages');
+      } catch (err) {
+        spinner.fail('Failed to install packages');
       }
     }
-
-    spinner.succeed("Successfully added default packages");
-
   } catch (error) {
     console.log(error);
   }
 
   if (packages.length > 0) {
     for (const tsPackage of packages) {
-      spinner.text = `Adding ${tsPackage}`;
-      shell.exec(
-        `cd ${resourcePath} && yarn add ${tsPackage.toLowerCase()} --silent`
-      );
-      spinner.succeed();
+      spinner.start(`Adding ${tsPackage}`);
+      await shell.exec(`cd ${resourcePath} && yarn add ${tsPackage.toLowerCase()} --silent`, {
+        silent: true,
+      });
+      spinner.succeed(`Successfully installed ${tsPackage}`);
     }
+
+    spinner.succeed('Successfully installed selected packages');
   }
 };

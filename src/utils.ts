@@ -1,1 +1,1 @@
-export const SectionLine = '==================================='
+export const SectionLine = '===================================';

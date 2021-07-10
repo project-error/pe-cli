@@ -1,5 +1,5 @@
-import inquirer from "inquirer"
-import { SectionLine } from "../utils"
+import inquirer from 'inquirer';
+import { SectionLine } from '../utils';
 
 const promptUi = () => {
   return inquirer.prompt([
@@ -11,19 +11,19 @@ const promptUi = () => {
         new inquirer.Separator(SectionLine),
         {
           name: 'React with TypeScript',
-          value: 'react_typescript'
+          value: 'react_typescript',
         },
         {
           name: 'React with JavaScript',
-          value: 'react_javascript'
+          value: 'react_javascript',
         },
         {
           name: 'None',
-          value: 'none'
+          value: 'none',
         },
-      ]
-    }
-  ])
-}
+      ],
+    },
+  ]);
+};
 
 export default promptUi;
