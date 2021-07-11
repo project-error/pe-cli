@@ -4,8 +4,6 @@ import figlet from 'figlet';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 
-// This will eventually be used for ui stuff
-// - yes, this was said 5 months ago...
 const ui = new inquirer.ui.BottomBar();
 
 console.log(
