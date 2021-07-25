@@ -38,10 +38,13 @@ export const createEssentials = async (
 
 	spinner.text = 'Creating client and server files!';
 	try {
+		console.log(uiFramework, language);
 		if (uiFramework !== 'none' && language !== 'Lua') {
+			// FIXME: Yes, I hate this too, but its 4.02 AM. Fix it yourself.
+			fs.mkdirSync(`${resourcePath}/resources`);
+
 			fs.mkdirSync(`${resourcePath}/resources/client`);
 			fs.mkdirSync(`${resourcePath}/resources/server`);
-
 		} else {
 			fs.mkdirSync(`${resourcePath}/client`);
 			fs.mkdirSync(`${resourcePath}/server`);
@@ -52,7 +55,7 @@ export const createEssentials = async (
 
 		const { createFiles } = await import(`./creators/${language}`);
 
-		createFiles(resourcePath);
+		createFiles(resourcePath, uiFramework);
 
 		spinner.succeed('Successfully created essential files!');
 	} catch (error) {
