@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { copySync } from 'fs-extra';
 
 export const copyFiles = (resourcePath: string, uiFramework: string): void => {
