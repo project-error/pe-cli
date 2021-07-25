@@ -55,14 +55,22 @@ const createEssentials = async (resourcePath, resourceName, language, uiFramewor
         return;
     }
     spinner.text = 'Creating client and server files!';
-    // CREATING
     try {
-        fs_1.default.mkdirSync(`${resourcePath}/client`);
-        fs_1.default.mkdirSync(`${resourcePath}/server`);
+        console.log(uiFramework, language);
+        if (uiFramework !== 'none' && language !== 'Lua') {
+            // FIXME: Yes, I hate this too, but its 4.02 AM. Fix it yourself.
+            fs_1.default.mkdirSync(`${resourcePath}/resources`);
+            fs_1.default.mkdirSync(`${resourcePath}/resources/client`);
+            fs_1.default.mkdirSync(`${resourcePath}/resources/server`);
+        }
+        else {
+            fs_1.default.mkdirSync(`${resourcePath}/client`);
+            fs_1.default.mkdirSync(`${resourcePath}/server`);
+        }
         if (uiFramework !== 'none')
             fs_1.default.mkdirSync(`${resourcePath}/ui`);
         const { createFiles } = await Promise.resolve().then(() => __importStar(require(`./creators/${language}`)));
-        createFiles(resourcePath);
+        createFiles(resourcePath, uiFramework);
         spinner.succeed('Successfully created essential files!');
     }
     catch (error) {

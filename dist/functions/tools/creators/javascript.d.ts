@@ -1,1 +1,1 @@
-export declare const createFiles: (resourcePath: string) => void;
+export declare const createFiles: (resourcePath: string, uiFramework: string) => void;
