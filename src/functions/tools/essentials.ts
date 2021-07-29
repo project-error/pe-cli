@@ -30,6 +30,10 @@ export const createEssentials = async (
 			fs.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf(fxmanifest, resourceName));
 		}
 
+		// .gitignore
+		const { gitignore } = await import('../../stubs/misc/git');
+		fs.writeFileSync(`${resourcePath}/.gitignore`, gitignore)
+
 		spinner.succeed('Successfully created fxmanifest.lua');
 	} catch (error) {
 		spinner.fail('Failed to create fxmanifest!');
@@ -38,7 +42,6 @@ export const createEssentials = async (
 
 	spinner.text = 'Creating client and server files!';
 	try {
-		console.log(uiFramework, language);
 		if (uiFramework !== 'none' && language !== 'Lua') {
 			// FIXME: Yes, I hate this too, but its 4.02 AM. Fix it yourself.
 			fs.mkdirSync(`${resourcePath}/resources`);
