@@ -48,6 +48,9 @@ const createEssentials = async (resourcePath, resourceName, language, uiFramewor
             const { fxmanifest } = await Promise.resolve().then(() => __importStar(require(`../../stubs/${language}/fxmanifest.stub`)));
             fs_1.default.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf_js_1.sprintf(fxmanifest, resourceName));
         }
+        // .gitignore
+        const { gitignore } = await Promise.resolve().then(() => __importStar(require('../../stubs/misc/git')));
+        fs_1.default.writeFileSync(`${resourcePath}/.gitignore`, gitignore);
         spinner.succeed('Successfully created fxmanifest.lua');
     }
     catch (error) {
@@ -56,7 +59,6 @@ const createEssentials = async (resourcePath, resourceName, language, uiFramewor
     }
     spinner.text = 'Creating client and server files!';
     try {
-        console.log(uiFramework, language);
         if (uiFramework !== 'none' && language !== 'Lua') {
             // FIXME: Yes, I hate this too, but its 4.02 AM. Fix it yourself.
             fs_1.default.mkdirSync(`${resourcePath}/resources`);
