@@ -33,7 +33,6 @@ export const installTemplate = async (
   }
 
   try {
-    // USING TYPESCRIPT
     spinner.start('Copying files to resource');
     const { copyFiles } = await import(`./copiers/${language}`);
     copyFiles(resourcePath, uiFramework);
