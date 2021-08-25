@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { copySync } from "fs-extra";
 
 export const copyFiles = (resourcePath: string, uiFramework: string): void => {
   if (uiFramework !== 'none') {
@@ -8,8 +9,7 @@ export const copyFiles = (resourcePath: string, uiFramework: string): void => {
       `${resourcePath}/resources/webpack.config.js`,
     );
 
-    fs.copyFileSync(`${resourcePath}/cfa-templates/${uiFramework}/`, `${resourcePath}/ui/`);
-
+    copySync(`${resourcePath}/cfa-templates/${uiFramework}/`, `${resourcePath}/ui/`);
   } else {
     fs.copyFileSync(`${resourcePath}/cfa-templates/js/package.json`, `${resourcePath}/package.json`);
     fs.copyFileSync(

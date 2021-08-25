@@ -43,7 +43,6 @@ export const createEssentials = async (
 	spinner.text = 'Creating client and server files!';
 	try {
 		if (uiFramework !== 'none' && language !== 'Lua') {
-			// FIXME: Yes, I hate this too, but its 4.02 AM. Fix it yourself.
 			fs.mkdirSync(`${resourcePath}/resources`);
 
 			fs.mkdirSync(`${resourcePath}/resources/client`);
@@ -52,7 +51,6 @@ export const createEssentials = async (
 			fs.mkdirSync(`${resourcePath}/client`);
 			fs.mkdirSync(`${resourcePath}/server`);
 		}
-
 
 		if (uiFramework !== 'none') fs.mkdirSync(`${resourcePath}/ui`);
 
