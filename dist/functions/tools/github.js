@@ -44,7 +44,6 @@ const installTemplate = async (resourcePath, packages, language, uiFramework) =>
         spinner.fail('Failed to clone templates');
     }
     try {
-        // USING TYPESCRIPT
         spinner.start('Copying files to resource');
         const { copyFiles } = await Promise.resolve().then(() => __importStar(require(`./copiers/${language}`)));
         copyFiles(resourcePath, uiFramework);
