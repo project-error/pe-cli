@@ -27,7 +27,7 @@ const cloneResource = async (resourceName, url) => {
     catch (error) {
         console.log(error);
     }
-    const spinner = ora_1.default('Installing packages...').start();
+    const spinner = (0, ora_1.default)('Installing packages...').start();
     spinner.succeed('Successfully added default packages');
     try {
         if (shelljs_1.default.exec(`cd ${resourceName} && yarn --silent && rm -rf .git && rm -rf .github`).code !== 0) {

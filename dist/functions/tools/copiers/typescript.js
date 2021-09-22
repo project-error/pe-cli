@@ -12,7 +12,7 @@ const copyFiles = (resourcePath, uiFramework) => {
         fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/webpack.config.js`, `${resourcePath}/resources/webpack.config.js`);
         fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/client/tsconfig.json`, `${resourcePath}/resources/client/tsconfig.json`);
         fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/server/tsconfig.json`, `${resourcePath}/resources/server/tsconfig.json`);
-        fs_extra_1.copySync(`${resourcePath}/cfa-templates/${uiFramework}`, `${resourcePath}/ui`);
+        (0, fs_extra_1.copySync)(`${resourcePath}/cfa-templates/${uiFramework}`, `${resourcePath}/ui`);
     }
     else {
         fs_1.default.copyFileSync(`${resourcePath}/cfa-templates/ts/package.json`, `${resourcePath}/package.json`);

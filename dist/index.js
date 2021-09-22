@@ -11,7 +11,7 @@ const inquirer_1 = __importDefault(require("inquirer"));
 const ui = new inquirer_1.default.ui.BottomBar();
 console.log(chalk_1.default.red(figlet_1.default.textSync('Project Error', { font: 'Standard', horizontalLayout: 'fitted' })));
 // Instantly Execs create command for testing
-create_1.createCommand().then(() => {
+(0, create_1.createCommand)().then(() => {
     console.log('Complete');
 });
 //# sourceMappingURL=index.js.map

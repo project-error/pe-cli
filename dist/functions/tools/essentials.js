@@ -27,7 +27,7 @@ const fs_1 = __importDefault(require("fs"));
 const ora_1 = __importDefault(require("ora"));
 const sprintf_js_1 = require("sprintf-js");
 const createEssentials = async (resourcePath, resourceName, language, uiFramework) => {
-    const spinner = ora_1.default('Loading universe!').start();
+    const spinner = (0, ora_1.default)('Loading universe!').start();
     try {
         spinner.text = `Creating ${resourceName} resource!`;
         // Creating the folder
@@ -42,11 +42,11 @@ const createEssentials = async (resourcePath, resourceName, language, uiFramewor
     try {
         if (uiFramework !== 'none') {
             const { fxmanifest } = await Promise.resolve().then(() => __importStar(require(`../../stubs/${language}/fxmanifest_react.stub`)));
-            fs_1.default.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf_js_1.sprintf(fxmanifest, resourceName));
+            fs_1.default.writeFileSync(`${resourcePath}/fxmanifest.lua`, (0, sprintf_js_1.sprintf)(fxmanifest, resourceName));
         }
         else {
             const { fxmanifest } = await Promise.resolve().then(() => __importStar(require(`../../stubs/${language}/fxmanifest.stub`)));
-            fs_1.default.writeFileSync(`${resourcePath}/fxmanifest.lua`, sprintf_js_1.sprintf(fxmanifest, resourceName));
+            fs_1.default.writeFileSync(`${resourcePath}/fxmanifest.lua`, (0, sprintf_js_1.sprintf)(fxmanifest, resourceName));
         }
         // .gitignore
         const { gitignore } = await Promise.resolve().then(() => __importStar(require('../../stubs/misc/git')));

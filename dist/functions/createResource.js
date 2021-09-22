@@ -9,8 +9,8 @@ const github_1 = require("./tools/github");
 const createResource = async (resourceName, language, packages, uiFramework) => {
     console.log('selected ui framework', uiFramework);
     const resourcePath = path_1.default.resolve(resourceName);
-    await essentials_1.createEssentials(resourcePath, resourceName, language, uiFramework);
-    await github_1.installTemplate(resourcePath, packages, language, uiFramework)
+    await (0, essentials_1.createEssentials)(resourcePath, resourceName, language, uiFramework);
+    await (0, github_1.installTemplate)(resourcePath, packages, language, uiFramework)
         .catch((e) => console.log(`Error in installing template. Error: ${e.message}`))
         .then(() => console.log('Success!'));
 };

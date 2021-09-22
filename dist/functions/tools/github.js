@@ -28,7 +28,7 @@ const ora_1 = __importDefault(require("ora"));
 const rimraf_1 = __importDefault(require("rimraf"));
 const installTemplate = async (resourcePath, packages, language, uiFramework) => {
     // CLONING REPO
-    const spinner = ora_1.default('Cloning templates').start();
+    const spinner = (0, ora_1.default)('Cloning templates').start();
     try {
         if (!shelljs_1.default.which('git')) {
             shelljs_1.default.echo('This script requires git');

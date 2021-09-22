@@ -5,7 +5,7 @@ const fs_extra_1 = require("fs-extra");
 const copyFiles = (resourcePath, uiFramework) => {
     // lua does not need to copy any files
     if (uiFramework !== 'none') {
-        fs_extra_1.copySync(`${resourcePath}/cfa-templates/${uiFramework}`, `${resourcePath}/ui`);
+        (0, fs_extra_1.copySync)(`${resourcePath}/cfa-templates/${uiFramework}`, `${resourcePath}/ui`);
     }
 };
 exports.copyFiles = copyFiles;

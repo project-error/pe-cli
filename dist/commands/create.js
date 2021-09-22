@@ -14,19 +14,19 @@ const promptUi_1 = __importDefault(require("../prompts/promptUi"));
 // Create command functionality
 const createCommand = async () => {
     const getUrlParam = process.argv.find((arg) => arg.startsWith('http'));
-    const resourceName = await promptResource_1.default();
+    const resourceName = await (0, promptResource_1.default)();
     if (getUrlParam != null) {
-        await cloneResource_1.cloneResource(resourceName.val, getUrlParam);
+        await (0, cloneResource_1.cloneResource)(resourceName.val, getUrlParam);
         return;
     }
-    const language = await promptLanguage_1.default();
+    const language = await (0, promptLanguage_1.default)();
     console.log(language);
     let packages = null;
     if (index_1.hasPackages.includes(language.val)) {
-        packages = await promptPackages_1.default(language.val);
+        packages = await (0, promptPackages_1.default)(language.val);
     }
-    const uiFramework = await promptUi_1.default();
-    await createResource_1.default(resourceName.val, language.val, packages ? packages.val : [], uiFramework.val);
+    const uiFramework = await (0, promptUi_1.default)();
+    await (0, createResource_1.default)(resourceName.val, language.val, packages ? packages.val : [], uiFramework.val);
     const resultObject = {
         language,
         resourceName,
