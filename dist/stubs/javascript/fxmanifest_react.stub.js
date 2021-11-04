@@ -7,15 +7,14 @@ game 'gta5'
 
 name '%s'
 
-client_script 'client/client.js'
+client_script 'resources/dist/client/*.client.js'
 
-server_script 'server/server.js'
+server_script 'resources/dist/server/*.server.js'
 
-ui_page 'html/index.html'
+ui_page 'ui/dist/index.html'
 
 files {
-  'html/index.html',
-  'html/index.css',
-  'html/index.js'
+  'ui/dist/index.html',
+  'ui/dist/**/*'
 }`;
 //# sourceMappingURL=fxmanifest_react.stub.js.map

@@ -7,7 +7,7 @@ game 'gta5'
 
 name '%s'
 
-client_script 'client/client.js'
+client_script 'dist/client/*.client.js'
 
-server_script 'server/server.js'`;
+server_script 'dist/server/*.server.js'`;
 //# sourceMappingURL=fxmanifest.stub.js.map
