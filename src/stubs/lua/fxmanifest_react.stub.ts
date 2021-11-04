@@ -8,10 +8,9 @@ client_script 'client/client.lua'
 
 server_script 'server/server.lua'
 
-ui_page 'html/index.html'
+ui_page 'ui/dist/index.html'
 
 files {
-  'html/index.html',
-  'html/index.css',
-  'html/index.js'
+  'ui/dist/index.html',
+  'ui/dist/**/*'
 }`;
